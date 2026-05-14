@@ -9,7 +9,7 @@ x-typebot-common: &typebot-common
     - typebot-network
   env_file: .env
   environment:
-    REDIS_URL: redis://typebot-redis:6380
+    REDIS_URL: redis://typebot-redis:6379
 
 services:
   typebot-db:
