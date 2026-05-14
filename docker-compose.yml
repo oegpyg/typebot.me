@@ -11,7 +11,7 @@ x-typebot-common: &typebot-common
     - "host.docker.internal:host-gateway"
   env_file: .env
   environment:
-    DATABASE_URL: postgresql://postgres:typebot@host.docker.internal:5433/typebot
+    DATABASE_URL: postgresql://postgres:typebot@host.docker.internal:55432/typebot
     REDIS_URL: redis://host.docker.internal:6380
 
 services:
@@ -19,7 +19,7 @@ services:
     image: postgres:16
     restart: always
     ports:
-      - "5433:5432"
+      - "55432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
