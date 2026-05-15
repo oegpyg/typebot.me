@@ -48,10 +48,10 @@ services:
   typebot-builder:
     <<: *typebot-common
     build:
-    context: .
-    dockerfile: Dockerfile
-    args:
-      SCOPE: builder
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SCOPE: builder
     image: typebot-builder:local
     ports:
       - "8090:3000"
