@@ -47,12 +47,7 @@ services:
 
   typebot-builder:
     <<: *typebot-common
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        SCOPE: builder
-    image: typebot-builder:local
+    image: baptistearno/typebot-builder:latest
     ports:
       - "8090:3000"
 
