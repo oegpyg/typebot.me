@@ -64,6 +64,33 @@ export const convertMessageToWhatsAppMessage = async ({
         },
       };
     }
+    case BubbleBlockType.STICKER: {
+      if (!message.content.url || isImageUrlNotCompatible(message.content.url))
+        return null;
+
+      if (mediaCache) {
+        const mediaId = await getOrUploadMedia({
+          url: message.content.url,
+          cache: mediaCache,
+        });
+
+        if (mediaId) {
+          return {
+            type: "sticker",
+            sticker: {
+              id: mediaId,
+            },
+          };
+        }
+      }
+
+      return {
+        type: "sticker",
+        sticker: {
+          link: message.content.url,
+        },
+      };
+    }
     case BubbleBlockType.AUDIO:
       if (!message.content.url) return null;
 

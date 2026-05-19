@@ -64,6 +64,9 @@ export const BlockNodeContent = ({
     case BubbleBlockType.IMAGE: {
       return <ImageBubbleContent block={block} />;
     }
+    case BubbleBlockType.STICKER: {
+      return <ImageBubbleContent block={block} />;
+    }
     case BubbleBlockType.VIDEO: {
       return <VideoBubbleContent block={block} />;
     }

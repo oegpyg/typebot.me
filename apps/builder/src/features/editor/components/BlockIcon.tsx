@@ -61,6 +61,10 @@ export const BlockIcon = ({ type, className }: BlockIconProps): JSX.Element => {
       return (
         <ImageBubbleIcon className={cn("text-gray-12 stroke-2", className)} />
       );
+    case BubbleBlockType.STICKER:
+      return (
+        <ImageBubbleIcon className={cn("text-gray-12 stroke-2", className)} />
+      );
     case BubbleBlockType.VIDEO:
       return (
         <VideoBubbleIcon className={cn("text-gray-12 stroke-2", className)} />

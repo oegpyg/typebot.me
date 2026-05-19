@@ -1,6 +1,7 @@
 import type { ImageBubbleBlock } from "./schema";
 
 export const defaultImageBubbleContent = {
+  mediaType: "image",
   clickLink: {
     alt: "Bubble image",
   },

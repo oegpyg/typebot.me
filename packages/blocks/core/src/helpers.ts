@@ -1,6 +1,7 @@
 import { BubbleBlockType } from "@typebot.io/blocks-bubbles/constants";
 import type { ImageBubbleBlock } from "@typebot.io/blocks-bubbles/image/schema";
 import type { BubbleBlock } from "@typebot.io/blocks-bubbles/schema";
+import type { StickerBubbleBlock } from "@typebot.io/blocks-bubbles/sticker/schema";
 import type { TextBubbleBlock } from "@typebot.io/blocks-bubbles/text/schema";
 import type { VideoBubbleBlock } from "@typebot.io/blocks-bubbles/video/schema";
 import type { CardsBlock } from "@typebot.io/blocks-inputs/cards/schema";
@@ -36,8 +37,10 @@ export const isTextBubbleBlock = (block: Block): block is TextBubbleBlock =>
 
 export const isMediaBubbleBlock = (
   block: Block,
-): block is ImageBubbleBlock | VideoBubbleBlock =>
-  block.type === BubbleBlockType.IMAGE || block.type === BubbleBlockType.VIDEO;
+): block is ImageBubbleBlock | StickerBubbleBlock | VideoBubbleBlock =>
+  block.type === BubbleBlockType.IMAGE ||
+  block.type === BubbleBlockType.STICKER ||
+  block.type === BubbleBlockType.VIDEO;
 
 export const isTextInputBlock = (block: Block): block is TextInputBlock =>
   block.type === InputBlockType.TEXT;

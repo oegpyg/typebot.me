@@ -1,6 +1,7 @@
 import { useTranslate } from "@tolgee/react";
 import { defaultImageBubbleContent } from "@typebot.io/blocks-bubbles/image/constants";
 import type { ImageBubbleBlock } from "@typebot.io/blocks-bubbles/image/schema";
+import type { StickerBubbleBlock } from "@typebot.io/blocks-bubbles/sticker/schema";
 import { isDefined, isNotEmpty } from "@typebot.io/lib/utils";
 import { Field } from "@typebot.io/ui/components/Field";
 import { Switch } from "@typebot.io/ui/components/Switch";
@@ -11,8 +12,10 @@ import type { FilePathUploadProps } from "@/features/upload/api/generateUploadUr
 
 type Props = {
   uploadFileProps: FilePathUploadProps;
-  block: ImageBubbleBlock;
-  onContentChange: (content: ImageBubbleBlock["content"]) => void;
+  block: ImageBubbleBlock | StickerBubbleBlock;
+  onContentChange: (
+    content: ImageBubbleBlock["content"] | StickerBubbleBlock["content"],
+  ) => void;
 };
 
 export const ImageBubbleSettings = ({
@@ -25,13 +28,19 @@ export const ImageBubbleSettings = ({
     isNotEmpty(block.content?.clickLink?.url),
   );
 
+  const mediaType =
+    block.type === "sticker"
+      ? "sticker"
+      : (block.content?.mediaType ?? "image");
+
   const updateImage = (url: string) => {
-    onContentChange({ ...block.content, url });
+    onContentChange({ ...block.content, mediaType, url });
   };
 
   const updateClickLinkUrl = (url: string) => {
     onContentChange({
       ...block.content,
+      mediaType,
       clickLink: { ...block.content?.clickLink, url },
     });
   };
@@ -39,13 +48,14 @@ export const ImageBubbleSettings = ({
   const updateClickLinkAltText = (alt: string) => {
     onContentChange({
       ...block.content,
+      mediaType,
       clickLink: { ...block.content?.clickLink, alt },
     });
   };
 
   const toggleClickLink = () => {
     if (isDefined(block.content?.clickLink) && showClickLinkInput) {
-      onContentChange({ ...block.content, clickLink: undefined });
+      onContentChange({ ...block.content, mediaType, clickLink: undefined });
     }
     setShowClickLinkInput(!showClickLinkInput);
   };

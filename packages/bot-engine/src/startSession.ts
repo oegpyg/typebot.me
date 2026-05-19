@@ -593,6 +593,7 @@ const extractVariableIdsUsedForTranscript = (
       }
       if (
         block.type === BubbleBlockType.IMAGE ||
+        block.type === BubbleBlockType.STICKER ||
         block.type === BubbleBlockType.VIDEO ||
         block.type === BubbleBlockType.AUDIO
       ) {

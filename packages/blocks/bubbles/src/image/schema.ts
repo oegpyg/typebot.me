@@ -4,6 +4,7 @@ import { BubbleBlockType } from "../constants";
 
 export const imageBubbleContentSchema = z.object({
   url: z.string().optional(),
+  mediaType: z.enum(["image", "sticker"]).optional(),
   clickLink: z
     .object({
       url: z.string().optional(),

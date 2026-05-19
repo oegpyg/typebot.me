@@ -24,7 +24,10 @@ export const MediaBubblePopoverContent = (props: Props) => {
     <Popover.Popup
       className={cx(
         "p-4",
-        props.block.type === BubbleBlockType.IMAGE ? "w-[500px]" : "w-[400px]",
+        props.block.type === BubbleBlockType.IMAGE ||
+          props.block.type === BubbleBlockType.STICKER
+          ? "w-[500px]"
+          : "w-[400px]",
       )}
       side={props.side}
     >
@@ -40,6 +43,15 @@ export const MediaBubbleContent = ({
 }: Props) => {
   switch (block.type) {
     case BubbleBlockType.IMAGE: {
+      return (
+        <ImageBubbleSettings
+          uploadFileProps={uploadFileProps}
+          block={block}
+          onContentChange={onContentChange}
+        />
+      );
+    }
+    case BubbleBlockType.STICKER: {
       return (
         <ImageBubbleSettings
           uploadFileProps={uploadFileProps}

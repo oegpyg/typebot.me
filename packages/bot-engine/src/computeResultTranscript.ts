@@ -558,6 +558,15 @@ const convertChatMessageToTranscriptMessage = (
         image: chatMessage.content.url,
       };
     }
+    case BubbleBlockType.STICKER: {
+      if (!chatMessage.content.url) return null;
+      return {
+        id: chatMessage.id,
+        role: "bot",
+        type: "image",
+        image: chatMessage.content.url,
+      };
+    }
     case BubbleBlockType.VIDEO: {
       if (!chatMessage.content.url) return null;
       return {

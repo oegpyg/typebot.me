@@ -1,12 +1,13 @@
 import { useTranslate } from "@tolgee/react";
 import type { ImageBubbleBlock } from "@typebot.io/blocks-bubbles/image/schema";
+import type { StickerBubbleBlock } from "@typebot.io/blocks-bubbles/sticker/schema";
 import { cx } from "@typebot.io/ui/lib/cva";
 import { findUniqueVariable } from "@typebot.io/variables/findUniqueVariable";
 import { useTypebot } from "@/features/editor/providers/TypebotProvider";
 import { VariableTag } from "@/features/graph/components/nodes/block/VariableTag";
 
 type Props = {
-  block: ImageBubbleBlock;
+  block: ImageBubbleBlock | StickerBubbleBlock;
 };
 
 export const ImageBubbleContent = ({ block }: Props) => {

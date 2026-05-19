@@ -42,6 +42,12 @@ export const HostBubble = (props: Props) => (
         onTransitionEnd={props.onTransitionEnd}
       />
     </Match>
+    <Match when={props.message.type === BubbleBlockType.STICKER}>
+      <ImageBubble
+        content={props.message.content as ImageBubbleBlock["content"]}
+        onTransitionEnd={props.onTransitionEnd}
+      />
+    </Match>
     <Match when={props.message.type === BubbleBlockType.VIDEO}>
       <VideoBubble
         content={props.message.content as VideoBubbleBlock["content"]}

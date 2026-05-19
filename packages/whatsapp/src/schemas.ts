@@ -75,6 +75,10 @@ const sendingMessageSchema = z.discriminatedUnion("type", [
     image: mediaSchema,
   }),
   z.object({
+    type: z.literal("sticker"),
+    sticker: mediaSchema,
+  }),
+  z.object({
     type: z.literal("audio"),
     audio: mediaSchema,
   }),

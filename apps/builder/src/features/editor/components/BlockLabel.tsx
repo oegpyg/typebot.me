@@ -41,6 +41,7 @@ export const getBubbleBlockLabel = (
 ): { [key in BubbleBlockType]: string } => ({
   [BubbleBlockType.TEXT]: t("editor.sidebarBlock.text.label"),
   [BubbleBlockType.IMAGE]: t("editor.sidebarBlock.image.label"),
+  [BubbleBlockType.STICKER]: "Sticker",
   [BubbleBlockType.VIDEO]: t("editor.sidebarBlock.video.label"),
   [BubbleBlockType.EMBED]: t("editor.sidebarBlock.embed.label"),
   [BubbleBlockType.AUDIO]: t("editor.sidebarBlock.audio.label"),

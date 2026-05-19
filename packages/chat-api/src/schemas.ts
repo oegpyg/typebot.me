@@ -89,6 +89,11 @@ const imageBubbleSchema = z.object({
   content: imageBubbleContentSchema,
 });
 
+const stickerBubbleSchema = z.object({
+  type: z.enum([BubbleBlockType.STICKER]),
+  content: imageBubbleContentSchema,
+});
+
 const videoBubbleSchema = z.object({
   type: z.enum([BubbleBlockType.VIDEO]),
   content: videoBubbleContentSchema,
@@ -129,6 +134,7 @@ export const chatBubbleSchema = z
     z.discriminatedUnion("type", [
       textBubbleSchema,
       imageBubbleSchema,
+      stickerBubbleSchema,
       videoBubbleSchema,
       audioBubbleSchema,
       embedBubbleSchema,
