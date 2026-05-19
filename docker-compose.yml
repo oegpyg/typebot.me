@@ -7,6 +7,7 @@ x-typebot-common: &typebot-common
       condition: service_healthy
   networks:
     - typebot-network
+    - bots_shared_net
   env_file: .env
   environment:
     REDIS_URL: redis://typebot-redis:6379
@@ -60,6 +61,8 @@ services:
 networks:
   typebot-network:
     driver: bridge
+  bots_shared_net:
+    external: true
 
 volumes:
   db-data:
